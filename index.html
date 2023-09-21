@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브라보펫</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        window.onload = function () {
+
+            function eventDay() {
+                let date = new Date()
+                let event = new Date('2024-09-20 18:20:00')
+
+                let eventDate = event - date
+                console.log(eventDate)
+                //일
+                let eventD = Math.floor(eventDate / (60 * 1000 * 60 * 24)) + 1
+                console.log(eventD)
+
+                //시간
+                let eventHour = String(Math.floor((eventDate % (60 * 1000 * 60 * 24)) / (60 * 1000 * 60))).padStart(2, '0')
+                console.log(eventHour)
+
+                //분
+                let eventMin = String(Math.floor((eventDate % (60 * 1000 * 60)) / (60 * 1000))).padStart(2, '0')
+                console.log(eventMin)
+
+                //초
+                let eventSec = String(Math.floor((eventDate % (60 * 1000)) / (1000))).padStart(2, '0')
+                console.log(eventSec)
+
+                let time = document.querySelector('.time')
+                time.innerHTML = eventD + '일 ' + eventHour + ':' + eventMin + ':' + eventSec
+            }//eventDay()
+            eventDay()
+            setInterval(eventDay, 1000)
+        }//script
+        $(function () {
+
+            //menu_mobile {
+                $('.menu_open').click(function(){
+                    $('.main_nav nav').css({
+                        'left':'0',
+                        'transition':'0.5s'
+                    })
+                })
+                $('.menu_close').click(function(){
+                    $('.main_nav nav').css({
+                    'left' : '-100%'
+                    })
+                });
+            //main_visual
+            var swiper = new Swiper(".mySwiper", {
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+            });
+
+            //cont01
+            var swiper = new Swiper(".cont01_1", {
+                slidesPerView: 3,
+                spaceBetween: 10,
+                freeMode: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                    },
+                    414: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                    },
+                    787: {
+                        slidesPerView: 4,
+                        spaceBetween: 10,
+                    },
+                    1200: {
+                        slidesPerView: 6,
+                        spaceBetween: 80,
+                    },
+                },
+            });
+
+            //best
+            var swiper = new Swiper(".best", {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                freeMode: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                    },
+                    550: {
+                        slidesPerView: 3,
+                        spaceBetween: 18,
+                    },
+                    960: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                },
+            });
+
+            //new
+            var swiper = new Swiper(".new", {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                freeMode: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                    },
+                    550: {
+                        slidesPerView: 3,
+                        spaceBetween: 18,
+                    },
+                    960: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                },
+            });
+
+            //ootd
+            var swiper = new Swiper(".ootd", {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                freeMode: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                    },
+                    550: {
+                        slidesPerView: 3,
+                        spaceBetween: 18,
+                    },
+                    960: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                },
+            });
+
+            //cont01
+            $('.cont01 ul li').click(function () {
+                $('.cont01 ul li').removeClass('on')
+                $(this).addClass('on')
+                $('.cont01 .cont01_1').removeClass('on')
+                $('.cont01 .cont01_1').eq($(this).index()).addClass('on')
+            })
+
+            //cont03
+            $('.cont03 ul li').click(function () {
+                $('.cont03 ul li').removeClass('on')
+                $(this).addClass('on')
+                $('.cont03 .best').removeClass('on')
+                $('.cont03 .best').eq($(this).index()).addClass('on')
+            })
+        })//jquery end
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header class="top_header">
+            <div class="inner">
+                <h1>
+                    <a href="#"><img src="img/logo_on.png" alt=""></a>
+                </h1>
+                <div class="search">
+                    <input type="text" id="name" />
+                    <img src="img/아이콘/icons8-수색-100 (1).png" alt="">
+                </div><!-- .search end -->
+                <nav class="top_gnb">
+                    <ul class="gnb">
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">장바구니</a></li>
+                        <li><a href="#">마이샵</a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">리셀러전용 문의</a></li>
+                    </ul><!-- .gnb end -->
+                </nav>
+
+                <ul>
+                    <li><img src="img/아이콘/icons8-성별-중립-사용자-64.png" alt=""></li>
+                    <li><img src="img/아이콘/icons8-쇼핑-64.png" alt=""></li>
+                    <li class="menu_open"><img src="img/아이콘/icons8-메뉴-100 (1).png" alt=""></li>
+                </ul>
+            </div><!-- .inner end -->
+        </header>
+        <header class="main_nav">
+            <div class="inner">
+                <ul class="gnb pc">
+                    <li><a href="#">사료</a></li>
+                    <li><a href="#">간식</a></li>
+                    <li><a href="#">미용용품</a></li>
+                    <li><a href="#">패션용품</a></li>
+                    <li><a href="#">식기/급수기</a></li>
+                    <li><a href="#">하우스/방석</a></li>
+                    <li><a href="#">산책/야외</a></li>
+                    <li><a href="#">장난감/훈련용품</a></li>
+                    <li><a href="#">위생/배변</a></li>
+                    <li><a href="#">건강관리</a></li>
+                    <li><a href="#">고양이용품</a></li>
+                    <li><a href="#">리셀러추천</a></li>
+                </ul><!-- .gnb end -->
+               <nav>
+                <div class="menu_close">
+                    <img src="img/아이콘/icons8-곱하다-96.png" alt="">
+                </div><!-- .menu_close end -->
+                <ul class="gnb mobile">
+                    <li><a href="#">사료</a></li>
+                    <li><a href="#">간식</a></li>
+                    <li><a href="#">미용용품</a></li>
+                    <li><a href="#">패션용품</a></li>
+                    <li><a href="#">식기/급수기</a></li>
+                    <li><a href="#">하우스/방석</a></li>
+                    <li><a href="#">산책/야외</a></li>
+                    <li><a href="#">장난감/훈련용품</a></li>
+                    <li><a href="#">위생/배변</a></li>
+                    <li><a href="#">건강관리</a></li>
+                    <li><a href="#">고양이용품</a></li>
+                    <li><a href="#">리셀러추천</a></li>
+                </ul><!-- .gnb end -->
+               </nav>
+              
+            </div><!-- .inner end -->
+        </header><!-- .main_nav end -->
+        <main>
+            <section class="main_visual">
+                <!-- Swiper -->
+                <div class="swiper mySwiper pc">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img/배너_02.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/배너_03.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/배너_04.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/배너_05.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper mySwiper tab">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img/mainvisual2-1.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/mainvisual2-2.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/mainvisual2-3.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/mainvisual2-4.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!--  <div class="swiper mySwiper mob">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img/배너_02.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/배너_03.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/배너_04.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/배너_05.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div> -->
+            </section><!-- .main_visual end -->
+            <section class="cont01">
+                <div class="inner">
+                    <ul>
+                        <li class="on">사료</li>
+                        <li>간식</li>
+                        <li>용품</li>
+                        <li>건강관리</li>
+                        <li>스타일</li>
+                    </ul>
+                    <div class="list">
+                        <div class="swiper cont01_1 on">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/mainmenu_01.png" alt=""></figure>
+                                        <h3>퍼피(~1세)</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/mainmenu_02.png" alt=""></figure>
+                                        <h3>어덜트(1세~7세)</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/mainmenu_03.png" alt=""></figure>
+                                        <h3>시니어(7세~)</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건식.png" alt=""></figure>
+                                        <h3>건식</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/습식.png" alt=""></figure>
+                                        <h3>습식/화식</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/동결.png" alt=""></figure>
+                                        <h3>동결/건조</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper cont01_1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/껌.png" alt=""></figure>
+                                        <h3>껌</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/뼈.png" alt=""></figure>
+                                        <h3>뼈/불리</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/저키.png" alt=""></figure>
+                                        <h3>저키/트릿</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/사사미.png" alt=""></figure>
+                                        <h3>사사미/육포</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건조.png" alt=""></figure>
+                                        <h3>동결/건조</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/캔.png" alt=""></figure>
+                                        <h3>캔/파우치</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper cont01_1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_01.png" alt=""></figure>
+                                        <h3>칫솔/치약</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_02.png" alt=""></figure>
+                                        <h3>노즈워크</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_03.png" alt=""></figure>
+                                        <h3>배변용품</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_04.png" alt=""></figure>
+                                        <h3>목욕용품</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_05.png" alt=""></figure>
+                                        <h3>미용/관리</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_06.png" alt=""></figure>
+                                        <h3>구강청결</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/img_homecate_dog03_07.png" alt=""></figure>
+                                        <h3>외출/산책</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper cont01_1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강01.png" alt=""></figure>
+                                        <h3>피부/모질</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강02.png" alt=""></figure>
+                                        <h3>건강검진</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강03.png" alt=""></figure>
+                                        <h3>영양/보조제</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강04.png" alt=""></figure>
+                                        <h3>영양간식</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강05.png" alt=""></figure>
+                                        <h3>연고/크림</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강06.png" alt=""></figure>
+                                        <h3>기타건강관리</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/건강07.png" alt=""></figure>
+                                        <h3>눈물관리</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper cont01_1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/dan.png" alt=""></figure>
+                                        <h3>By 댄(DAN)</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/티셔.png" alt=""></figure>
+                                        <h3>티셔츠/민소매</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/올인.png" alt=""></figure>
+                                        <h3>올인원</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/원피스.jpg" alt=""></figure>
+                                        <h3>드레스</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/아우터.png" alt=""></figure>
+                                        <h3>아우터</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/악세.png" alt=""></figure>
+                                        <h3>악세서리</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure><img src="img/시즌.png" alt=""></figure>
+                                        <h3>시즌 의류</h3>
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div><!-- .list end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont01 end -->
+            <section class="cont02">
+                <div class="inner">
+                    <div class="title">
+                        <h3>오늘의 핫딜🔥</h3>
+                        <p class="time"></p>
+                    </div><!-- title end -->
+                    <div class="list">
+                        <div class="item">
+                            <figure>
+                                <img src="img/HOT01.jpg" alt="">
+                                <span>20%</span>
+                            </figure>
+                            <div class="text">
+                                <h3>네츄럴코어 센시티브케어 D2 베지</h3>
+                                <strong>36,000원</strong>
+                                <p><img src="img/아이콘/star.png" alt="">4.8<span>(18)</span></p>
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <figure>
+                                <img src="img/HOT02.jpg" alt="">
+                                <span>16%</span>
+                            </figure>
+                            <div class="text">
+                                <h3>뉴알엑스 오! 나의 치즈 키위 7p</h3>
+                                <strong>3,800원</strong>
+                                <p><img src="img/아이콘/star.png" alt="">4.8<span>(64)</span></p>
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <figure>
+                                <img src="img/HOT03.jpg" alt="">
+                                <span>39%</span>
+                            </figure>
+                            <div class="text">
+                                <h3>[플라고] 치약 80g</h3>
+                                <strong>13,440원</strong>
+                                <p><img src="img/아이콘/star.png" alt="">4.8<span>(19,482)</span></p>
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <figure>
+                                <img src="img/HOT04.png" alt="">
+                                <span>26%</span>
+                            </figure>
+                            <div class="text">
+                                <h3>네츄럴코어 네츄럴 터키 (40g)</h3>
+                                <strong>9,600원</strong>
+                                <p><img src="img/아이콘/star.png" alt="">4.8<span>(721)</span></p>
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                    </div><!-- .list end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont02 end -->
+            <section class="cont03">
+                <div class="inner">
+                    <h2>이번 주 베스트 아이템</h2>
+                    <ul>
+                        <li class="on">사료</li>
+                        <li>간식</li>
+                        <li>용품</li>
+                        <li>건강관리</li>
+                        <li>스타일</li>
+                    </ul>
+                    <div class="list">
+                        <!-- Swiper -->
+                        <div class="swiper best on">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best01.jpeg" alt="">
+                                            <span>1</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>로얄캐닌 독 미니 인도어 어덜트 3kg
+                                                소화기 건강</h3>
+                                            <strong>43,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">5.0<span>(4638)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best02.png" alt="">
+                                            <span>2</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>ANF 독 식스프리플러스 오리고기&
+                                                연어 포독 (5.6kg)</h3>
+                                            <strong>57,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(1098)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best03.png" alt="">
+                                            <span>3</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>지위픽 독식품 고등어&양고기 1kg</h3>
+                                            <strong>87,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(707)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best04.jpeg" alt="">
+                                            <span>4</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>오리젠 독 퍼피 2kg</h3>
+                                            <strong>38,950원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(2799)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best05.png" alt="">
+                                            <span>5</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>로우즈 밀프리 LID 와일드 캇 살몬 (9kg)</h3>
+                                            <strong>206,100원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.5<span>(74)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best06.jpg" alt="">
+                                            <span>6</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>스텔라앤츄이스 독 츄이스 치킨 디너패티 (709g)</h3>
+                                            <strong>95,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(103)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper best">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best2-1.png" alt="">
+                                            <span>1</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[잇츄위크] 잇츄 오리지널 S 10개입 (옐로우/그린/브라운/꿀잠츄)</h3>
+                                            <strong>18,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(59909)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best2-2.png" alt="">
+                                            <span>2</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[잇츄위크] 잇츄 잇츄러스 슬림 버라이어티팩 (32개입)</h3>
+                                            <strong>54,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(1217)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best2-3.png" alt="">
+                                            <span>3</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>닥터설 트릿 모음전</h3>
+                                            <strong>14,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(23557)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best2-4.png" alt="">
+                                            <span>4</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[특가존] [유통기한 23년10월28일] 베터 부스트믹스 독</h3>
+                                            <strong>12,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(578)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best2-5.png" alt="">
+                                            <span>5</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[플라고] 벌집덴탈껌 3종 (아이즈, 힙앤조인트, 스킨앤코트)</h3>
+                                            <strong>14,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(2838)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best2-6.png" alt="">
+                                            <span>6</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[잇츄위크] 잇쭈 힙앤조인트 짜먹는 스틱간식 (8개입)</h3>
+                                            <strong>12,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(4577)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper best">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best3-1.png" alt="">
+                                            <span>1</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[특가존] [플라고] 치약 시카 덴티덤 60g</h3>
+                                            <strong>22,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(6638)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best3-2.png" alt="">
+                                            <span>2</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[1개] 고래패드 (소형 / 대형)</h3>
+                                            <strong>18,500원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(154)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best3-3.png" alt="">
+                                            <span>3</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[1개] 무무 배변패드 (베이직 / 대형)</h3>
+                                            <strong>17,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(5660)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best3-4.jpg" alt="">
+                                            <span>4</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[특가존] 닥터설 앞섬방지 하네스 세트 L</h3>
+                                            <strong>69,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.6<span>(1821)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best3-5.jpg" alt="">
+                                            <span>5</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[특가존] 댄 미키마우스 보듬주머니</h3>
+                                            <strong>84,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">5.0<span>(24)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best3-6.png" alt="">
+                                            <span>4</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[특가존] 닥터설 플레이 멀티볼 (블루,옐로우,레드)</h3>
+                                            <strong>29,500원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.6<span>(3799)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper best">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best4-1.jpg" alt="">
+                                            <span>1</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[베터] 반려동물 영양 파우더 8종 (면역/장/눈/관절/피부/심장/..</h3>
+                                            <strong>27,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(17605)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best4-2.png" alt="">
+                                            <span>2</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>인챈트 베베 (어린 동물 영양제) 70g</h3>
+                                            <strong>36,500원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(660)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best4-3.jpg" alt="">
+                                            <span>3</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댕댕츄정 프로바이오틱스 대용량 30개입 (장)</h3>
+                                            <strong>27,500원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(313)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best4-4.png" alt="">
+                                            <span>4</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댕댕츄정 루테인 12개입 (눈)</h3>
+                                            <strong>11,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(12799)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best4-5.png" alt="">
+                                            <span>5</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>로즈힙 바이탈 케이나인 3IN1 종합영양제 (150g/500g)</h3>
+                                            <strong>39,500원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(462)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best4-6.jpg" alt="">
+                                            <span>6</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>싱포라이프 반려동물 아스타 오메가3 (400mgx60캡슐)</h3>
+                                            <strong>34,800원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">5.0<span>(185)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper best">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best5-1.jpg" alt="">
+                                            <span>1</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[댄 DAN] 미키마우스 패딩 5종 (new)</h3>
+                                            <strong>65,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(463)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best5-2.jpg" alt="">
+                                            <span>2</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댄 라이온킹 심바 시리즈 올인원 (S-L)</h3>
+                                            <strong>30,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.7<span>(25)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best5-3.jpg" alt="">
+                                            <span>3</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댄 미키마우스 경량 패딩 라이트 그레이 (S-M)</h3>
+                                            <strong>68,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(31)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best5-4.jpg" alt="">
+                                            <span>4</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댄 디즈니 캐릭터 슬리브리스 푸우 (S)</h3>
+                                            <strong>32,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(86)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best5-5.jpg" alt="">
+                                            <span>5</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댄 Mr. Men Little Miss 스웻셔츠 리틀미스럭키 (S-XXL)</h3>
+                                            <strong>32,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(11)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/best5-6.jpg" alt="">
+                                            <span>6</span>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>댄 Mr. Men Little Miss 올오버 플리스 자켓 미스터 퍼펙트 (S-XXL)</h3>
+                                            <strong>49,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(9)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div><!-- .list end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont03 end -->
+            <section class="banner">
+                <div><img src="img/배너_01_1.jpg" alt=""></div>
+                <div><img src="img/banner2.png" alt=""></div>
+                <div><img src="img/banner3.png" alt=""></div>
+            </section><!-- .banner end -->
+            <section class="cont04">
+                <div class="inner">
+                    <h2>따끈따끈 신상품</h2>
+                    <div class="list">
+                        <!-- Swiper -->
+                        <div class="swiper new">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/new01.png" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>인챈트 스킨케어 (피부 영양제) 90g</h3>
+                                            <h4>35,000원</h4>
+                                            <strong><span>33%</span> 43,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">5.0<span>(4638)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/new03.png" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[헤이테일] 듀얼 논슬립 배변 매트(대..</h3>
+                                            <h4>49,500원</h4>
+                                            <strong><span>28%</span> 87,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(707)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/new02.png" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>풀루스 오랄케어 (구강 스프레이) 10..</h3>
+                                            <h4>15,200원</h4>
+                                            <strong><span>33%</span> 57,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(1098)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/new04.png" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>[소프트릿] 대용량 Best 3종(북어/치..</h3>
+                                            <h4>9,900원</h4>
+                                            <strong><span>20%</span> 38,950원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(2799)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/new05.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>몽글이 원목 세라믹 식기 테이블</h3>
+                                            <h4>13,250원</h4>
+                                            <strong><span>34%</span> 20,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.9<span>(181)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/new06.png" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>마이베프 필랩 신 바이오틱스 유산균 (2gx30p)</h3>
+                                            <h4>29,000원</h4>
+                                            <strong><span>24%</span> 38,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">5.0<span>(2)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div><!-- .list end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont04 end -->
+            <section class="cont05">
+                <div class="inner">
+                    <div class="left">
+                        <div class="text">
+                            <h3>너무 편안해서 잠이 솔솔 ~</h3>
+                            <p>폭신폭신~ 편안한 극세사 사각 방석으로 우리 아이의 보금자리를 만들어<br>주세요 넉넉한 사이즈와 심플한 디자인은 덤이랍니다~</p>
+                            <span>MORE</span>
+                        </div><!-- .text end -->
+                        <img src="img/sleep.png" alt="">
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <div class="text">
+                            <h3>우리집 댕댕이 건강하게 산책하는 방법</h3>
+                            <p>산책시에도 수시로 부족한 수분을 보충해 주세요.<br>위생과 편리함은 기본! 우리 아이 산책 전용 휴대용 물병을 소개합니다.</p>
+                            <span>MORE</span>
+                        </div><!-- .text end -->
+                        <img src="img/water.png" alt="">
+                    </div><!-- .left end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont05 end -->
+            <section class="cont06">
+                <div class="inner">
+                    <h2>🎑추석 OOTD 맡겨만 둬!</h2>
+                    <div class="list">
+                        <!-- Swiper -->
+                        <div class="swiper ootd">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/ootd01.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>리토가토 단아 한복 케이프 모음(S-XL)</h3>
+                                            <strong>12,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.3<span>(11)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/ootd02.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>리토가토 하린 한복 케이프 모음</h3>
+                                            <strong>26,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(5)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/ootd03.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>리토가토 단아 한복 케이프</h3>
+                                            <strong>12,900원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(31)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/ootd04.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>개달당 추석 설날 강아지 고양이 한복 케이프 & 머리핀 set 3colors</h3>
+                                            <strong>20,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.7<span>(21)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/ootd05.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>이츠독 색동자수 한복케이프 (민트)</h3>
+                                            <strong>12,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(4)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="img/ootd06.jpg" alt="">
+                                        </figure>
+                                        <div class="text">
+                                            <h3>이츠독 색동자수 한복케이프 (핑크)</h3>
+                                            <strong>12,000원</strong>
+                                            <p><img src="img/아이콘/star.png" alt="">4.8<span>(3)</span></p>
+                                        </div><!-- .text end -->
+                                    </div><!-- .item end -->
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div><!-- .list end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont06 end -->
+            <section class="cont07">
+                <div class="inner">
+                    <h2>오직 브라보펫에서만!</h2>
+                    <div class="box">
+                        <div class="main">
+                            <img src="img/only01.jpg" alt="">
+                        </div><!-- .main end -->
+                        <div class="side">
+                            <figure><img src="img/only02.png" alt=""></figure>
+                            <figure><img src="img/only03.png" alt=""></figure>
+                            <figure><img src="img/only04.png" alt=""></figure>
+                            <figure><img src="img/only05.png" alt=""></figure>
+                        </div><!-- side end -->
+                    </div><!-- .box end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont07 end -->
+            <section class="cont08">
+                <div class="inner">
+                    <h2>고객님들의 생생 리얼 후기 ~</h2>
+                    <div class="list">
+                        <div class="item">
+                            <figure>
+                                <img src="img/review01.jpg" alt="">
+                            </figure>
+                            <div class="text">
+                                <div class="top">
+                                    <img src="img/review01-1.jpg" alt="">
+                                    <div class="title">
+                                        <h4>한입뚝딱 국내산 대용량 닭가슴살(닭안심) 슬라이스 강..</h4>
+                                        <div>
+                                            <span>평점 5.0</span>
+                                            <span>리뷰 37개</span>
+                                        </div>
+                                    </div><!-- .title end -->
+                                </div><!-- .top end -->
+                                <div class="bottom">
+                                    <div class="star">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                    </div><!-- .star end -->
+                                    <p>
+                                        매번 집에서 냉동닭가슴살 손질해서 건조해줬는데 이거 완전 신세계네요 맛도 향도 좋고 깨끗합니다
+                                    </p>
+                                    <div class="id">
+                                        <span>ID ***</span>
+                                        <span>04.17</span>
+                                    </div><!-- .id end -->
+                                </div><!-- .bottom end -->
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <figure>
+                                <img src="img/review02.jpg" alt="">
+                            </figure>
+                            <div class="text">
+                                <div>
+                                    <div class="top">
+                                        <img src="img/review02-2.jpg" alt="">
+                                        <div class="title">
+                                            <h4>인섹트업 하이포알러지사료 조인트 2kg*2개</h4>
+                                            <div>
+                                                <span>평점 5.0</span>
+                                                <span>리뷰 37개</span>
+                                            </div>
+                                        </div><!-- .title end -->
+                                    </div><!-- .top end -->
+                                    <div class="bottom">
+                                        <div class="star">
+                                            <img src="img/아이콘/star2.png" alt="">
+                                            <img src="img/아이콘/star2.png" alt="">
+                                            <img src="img/아이콘/star2.png" alt="">
+                                            <img src="img/아이콘/star2.png" alt="">
+                                            <img src="img/아이콘/star2.png" alt="">
+                                        </div><!-- .star end -->
+                                        <p>
+                                            인섹트업 시리즈는 다 잘먹어서 이번에는 조인트로 구매해봤어요~~ 이것도 잘먹고 소화좋아요
+                                        </p>
+                                        <div class="id">
+                                            <span>ID ***</span>
+                                            <span>04.17</span>
+                                        </div><!-- .id end -->
+                                    </div><!-- .bottom end -->
+                                </div>
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <figure>
+                                <img src="img/review03.jpg" alt="">
+                            </figure>
+                            <div class="text">
+                                <div class="top">
+                                    <img src="img/review03-3.png" alt="">
+                                    <div class="title">
+                                        <h4>[헤이테일] 듀얼 논슬립 배변 매트 (대형)</h4>
+                                        <div>
+                                            <span>평점 5.0</span>
+                                            <span>리뷰 37개</span>
+                                        </div>
+                                    </div><!-- .title end -->
+                                </div><!-- .top end -->
+                                <div class="bottom">
+                                    <div class="star">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                        <img src="img/아이콘/star2.png" alt="">
+                                    </div><!-- .star end -->
+                                    <p>
+                                        논슬립 배변 매트는 정말 최고예요. 배변 패드가 절대 미끄러지지 않아 강아지가 안정적으로 소변을 볼 수 있고, 달리다가 패드를 ...
+                                    </p>
+                                    <div class="id">
+                                        <span>ID ***</span>
+                                        <span>04.17</span>
+                                    </div><!-- .id end -->
+                                </div><!-- .bottom end -->
+                            </div><!-- .text end -->
+                        </div><!-- .item end -->
+                    </div><!-- .list end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont08 end -->
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="top">
+                    <h1><img src="img/logo_on.png" alt=""></h1>
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">쇼핑몰 이용안내</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">고객만족센터</a></li>
+                        <li><a href="#">리셀러신청</a></li>
+                        <li><a href="#">리셀러전용 문의</a></li>
+                        <li><a href="#">리셀러전용 공지사항</a></li>
+                    </ul>
+                </div><!-- .top end -->
+                <div class="mid">
+                    <div class="time">
+                        <h3>070 - 4454 - 6287</h3>
+
+                        <p>평일 오전 10:00 ~ 오후 05:00</p>
+                        <p>점심 오후 12:00 ~ 오후 01:00</p>
+                        <p>휴무 토 / 일 공휴일 휴무</p>
+                        <p>교환/취소/환불은 1 : 1문의 게시판을 이용해주세요</p>
+                    </div><!-- .time -->
+                    <div class="address">
+                        <div>
+                            <p>회사명 : 주식회사 유영</p>
+                            <p>대표 : 배원섭</p>
+                            <p>대표전화 : 070 - 4454 - 6287</p>
+                            <p>팩스 : 032 - 710 - 4804</p>
+                        </div>
+                        <p>주소 : 100080 경기도 김포시 하성면 석평로15번길 194 브라보펫</p>
+                        <div>
+                            <p>사업자등록번호 : 182-87-00453</p>
+                            <p>통신판매업 신고 : 2016-경기김포-0952호</p>
+                        </div>
+                        <div>
+                            <p>개인정보관리책임자 : 이보라(bravo_pet@naver.com)</p>
+                            <p>이메일 : bravo_pet@naver.com</p>
+                        </div>
+                    </div><!-- .address end -->
+                    <div class="shop_menu">
+                        <h3>SHOPMENU</h3>
+                        <ul>
+                            <li>공지사항</li>
+                            <li>자주 묻는 질문</li>
+                            <li>1 : 1 질문</li>
+                            <li>고객만족센터</li>
+                        </ul>
+                    </div><!-- .shop_menu end -->
+                </div><!-- .mid end -->
+                <div class="bottom">
+                    <p>COPYRIGHT © 2023 BRAVOPET. ALL RIGHTS RESERVED.</p>
+                </div><!-- .bottom end -->
+            </div><!-- .inner end -->
+        </footer>
+    </div><!-- #wrap end -->
+</body>
+
+</html>
